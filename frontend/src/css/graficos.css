@@ -1,0 +1,90 @@
+.grafico-torta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    padding: 24px 12px;
+    flex-wrap: wrap;
+}
+
+.grafico-torta-circulo {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.grafico-torta-centro {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.grafico-torta-centro strong {
+    font-size: 25px;
+    color: #315B49;
+}
+
+.grafico-torta-centro span {
+    font-size: 12px;
+    color: #777;
+}
+
+.grafico-torta-leyenda {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 220px;
+    max-width: 350px;
+}
+
+.grafico-torta-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.grafico-torta-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.grafico-torta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.grafico-torta-tipo {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.grafico-torta-cantidad {
+    font-size: 12px;
+    color: #777;
+}
+
+@media (max-width: 600px) {
+    .grafico-torta {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .grafico-torta-circulo {
+        width: 200px;
+        height: 200px;
+    }
+}

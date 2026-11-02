@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './css/allthebest.css';
+import './css/graficos.css';
 import './css/header.css';
 import "./css/footer.css";
 import App from './App.jsx';

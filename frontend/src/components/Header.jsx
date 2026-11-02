@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const enlaces = [
+    { nombre: "inicio", ruta: "/inicio" },
     { nombre: "Clientes", ruta: "/clientes" },
     { nombre: "Tarjetas", ruta: "/tarjetas" },
     { nombre: "Registrar Tarjeta", ruta: "/tarjetas/nuevo" },

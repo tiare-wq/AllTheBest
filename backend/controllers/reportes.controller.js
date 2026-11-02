@@ -34,4 +34,32 @@ async function obtenerBalancePorAnio(req, res) {
     } catch (e) { errorServidor(res, e, "No se pudo consultar el balance del año indicado"); }
 }
 
-module.exports = { obtenerBalanceAnual, obtenerBalancePorAnio };
+async function obtenerTransaccionesPorTipo(req, res) {
+    try {
+        const resultado = await conConexion(async (conexion) => {
+            return await conexion.execute(
+                `SELECT
+                    t.nombre_tptran_tarjeta AS tipo_transaccion,
+                    COUNT(*) AS cantidad
+                 FROM transaccion_tarjeta_cliente tc
+                 INNER JOIN tipo_transaccion_tarjeta t
+                    ON tc.cod_tptran_tarjeta = t.cod_tptran_tarjeta
+                 GROUP BY t.nombre_tptran_tarjeta
+                 ORDER BY cantidad DESC`,
+                [],
+                { outFormat: oracledb.OUT_FORMAT_OBJECT }
+            );
+        });
+
+        return res.json(resultado.rows);
+    } catch (error) {
+        return errorServidor(
+            res,
+            error,
+            "Error al obtener las transacciones por tipo"
+        );
+    }
+}
+module.exports = { obtenerBalanceAnual, obtenerBalancePorAnio,
+    obtenerTransaccionesPorTipo
+ };

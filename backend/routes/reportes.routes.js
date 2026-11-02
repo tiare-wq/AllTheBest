@@ -5,5 +5,9 @@ const controller = require("../controllers/reportes.controller");
 
 router.get("/balance-anual", controller.obtenerBalanceAnual);
 router.get("/balance-anual/:anio", controller.obtenerBalancePorAnio);
+router.get(
+    "/transacciones-por-tipo",
+    controller.obtenerTransaccionesPorTipo
+);
 
 module.exports = router;

@@ -4,6 +4,7 @@ import BalanceAnual from './pages/BalanceAnual';
 import Clientes from './pages/Clientes';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Inicio from './pages/Inicio';
 import PuntosVigentes from './pages/PuntosVigentes';
 import Tarjeta from './pages/Tarjeta';
 import TarjetaDetalle from './pages/TarjetaDetalle';
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/balance" element={<BalanceAnual />} />
           <Route path="/clientes" element={<Clientes />} />
+          <Route path="/inicio" element={<Inicio />} />
           <Route path='/puntos' element={<PuntosVigentes />} />
           <Route path='/puntos' element={<Tarjeta />} />
           <Route path="/tarjetas" element={<Tarjeta />} />
