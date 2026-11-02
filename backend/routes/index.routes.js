@@ -8,5 +8,6 @@ router.use("/transacciones", require("./transacciones.routes"));
 router.use("/puntos", require("./puntos.routes"));
 router.use("/aportes", require("./aportes.routes"));
 router.use("/reportes", require("./reportes.routes"));
+router.use("/tarjetas", require("./detalles.routes"));
 
 module.exports = router;

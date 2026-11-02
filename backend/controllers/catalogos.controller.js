@@ -21,6 +21,10 @@ const obtenerProfesiones = consulta(
     `SELECT cod_prof_ofic, nombre_prof_ofic FROM PROFESION_OFICIO ORDER BY nombre_prof_ofic`,
     "No se pudieron consultar las profesiones"
 );
+const obtenerSucursales = consulta(
+    `SELECT id_sucursal, cod_region, cod_provincia, cod_comuna FROM SUCURSAL_RETAIL ORDER BY id_sucursal`,
+    "No se pudieron consultar las sucursales"
+)
 const obtenerRegiones = consulta(
     `SELECT cod_region, nombre_region FROM REGION ORDER BY nombre_region`,
     "No se pudieron consultar las regiones"
@@ -54,6 +58,6 @@ const obtenerProductos = consulta(
 );
 
 module.exports = {
-    obtenerTiposCliente, obtenerProfesiones, obtenerRegiones,
+    obtenerTiposCliente, obtenerProfesiones, obtenerSucursales, obtenerRegiones,
     obtenerProvincias, obtenerComunas, obtenerTiposTransaccion, obtenerProductos
 };

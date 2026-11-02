@@ -9,6 +9,7 @@ export const obtenerProvincias = (cod_region) =>
     request(`${BASE}/provincias${queryString({ cod_region })}`);
 export const obtenerComunas = (cod_region, cod_provincia) =>
     request(`${BASE}/comunas${queryString({ cod_region, cod_provincia })}`);
+export const obtenerSucursales = () => request(`${BASE}/sucursales`)
 export const obtenerTiposTransaccion = () => request(`${BASE}/tipos-transaccion`);
 
 // Requiere agregar GET /productos en catalogos.routes.js.

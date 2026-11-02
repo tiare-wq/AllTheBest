@@ -5,6 +5,7 @@ const controller = require("../controllers/catalogos.controller");
 
 router.get("/tipos-cliente", controller.obtenerTiposCliente);
 router.get("/profesiones", controller.obtenerProfesiones);
+router.get("/sucursales", controller.obtenerSucursales);
 
 router.get("/regiones", controller.obtenerRegiones);
 router.get("/provincias", controller.obtenerProvincias);

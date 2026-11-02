@@ -65,17 +65,19 @@ async function registrarTransaccion(req, res) {
     const missing = required.filter(k => b[k] === undefined || b[k] === null || b[k] === "");
     if (missing.length) return res.status(400).json({ error: "Faltan campos obligatorios", campos: missing });
 
-    const cuotas = b.cuotas;
-    if (!Array.isArray(cuotas) || cuotas.length !== Number(b.total_cuotas_transaccion)) {
+    const totalCuotas = Number(b.total_cuotas_transaccion);
+    const montoTotal = Number(b.monto_total_transaccion);
+
+    if (!Number.isInteger(totalCuotas) || totalCuotas <= 0) {
         return res.status(400).json({
-            error: "Debes enviar un arreglo cuotas cuya cantidad coincida con total_cuotas_transaccion"
+            error: "El número total de cuotas debe ser un entero positivo"
         });
     }
-    for (const [i, c] of cuotas.entries()) {
-        if (!c.fecha_venc_cuota || c.valor_cuota === undefined || c.valor_cuota === null) {
-            return res.status(400).json({ error: `La cuota ${i + 1} requiere fecha_venc_cuota y valor_cuota` });
-        }
-        if (Number(c.valor_cuota) <= 0) return res.status(400).json({ error: `El valor de la cuota ${i + 1} debe ser positivo` });
+
+    if (!Number.isFinite(montoTotal) || montoTotal <= 0) {
+        return res.status(400).json({
+            error: "El monto total debe ser positivo"
+        });
     }
 
     let cn;
@@ -97,7 +99,7 @@ async function registrarTransaccion(req, res) {
             }
         );
 
-        for (let i = 0; i < cuotas.length; i++) {
+        for (let i = 0; i < totalCuotas.length; i++) {
             await cn.execute(
                 `INSERT INTO CUOTA_TRANSAC_TARJETA_CLIENTE
                  (nro_tarjeta, nro_transaccion, nro_cuota, fecha_venc_cuota, valor_cuota)
@@ -105,9 +107,9 @@ async function registrarTransaccion(req, res) {
                          TO_DATE(:fecha_venc_cuota, 'YYYY-MM-DD'), :valor_cuota)`,
                 {
                     nro_tarjeta: b.nro_tarjeta, nro_transaccion: b.nro_transaccion,
-                    nro_cuota: cuotas[i].nro_cuota ?? i + 1,
-                    fecha_venc_cuota: cuotas[i].fecha_venc_cuota,
-                    valor_cuota: cuotas[i].valor_cuota
+                    nro_cuota: totalCuotas[i].nro_cuota ?? i + 1,
+                    fecha_venc_cuota: totalCuotas[i].fecha_venc_cuota,
+                    valor_cuota: totalCuotas[i].valor_cuota
                 }
             );
         }
@@ -118,7 +120,7 @@ async function registrarTransaccion(req, res) {
         });
     } catch (e) {
         if (cn) await cn.rollback();
-        errorServidor(res, e, "No se pudo registrar la transacción y sus cuotas");
+        errorServidor(res, e, `No se pudo registrar la transacción y sus cuotas`);
     } finally {
         if (cn) await cn.close();
     }

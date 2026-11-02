@@ -99,8 +99,7 @@ function Clientes() {
                                 <tr>
                                     <th>RUN</th>
                                     <th>Nombre</th>
-                                    <th>Correo</th>
-                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
                                     <th>Tipo de cliente</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -119,12 +118,7 @@ function Clientes() {
                                             <td>{`${run}-${dv}`}</td>
                                             <td>{obtenerNombre(cliente)}</td>
                                             <td>
-                                                {cliente.correo ?? cliente.CORREO ?? "—"}
-                                            </td>
-                                            <td>
-                                                {cliente.fono_contacto ??
-                                                    cliente.FONO_CONTACTO ??
-                                                    "—"}
+                                                {cliente.direccion ?? cliente.DIRECCION ?? "—"}
                                             </td>
                                             <td>
                                                 {cliente.nombre_tipo_cliente ??

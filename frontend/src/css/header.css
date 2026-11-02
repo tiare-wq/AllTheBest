@@ -1,0 +1,131 @@
+
+.main-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e8dfe4;
+    box-shadow: 0 3px 12px rgba(65, 20, 43, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1440px;
+    min-height: 88px;
+    margin: 0 auto;
+    padding: 12px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+/* MARCA */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #42152f;
+    flex-shrink: 0;
+}
+
+.brand-symbol {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #48152f;
+    color: #ffffff;
+    border-radius: 50% 50% 50% 8px;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-text strong {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand-text small {
+    color: #a13c69;
+    font-size: 0.58rem;
+    letter-spacing: 1.2px;
+}
+
+/* NAVEGACIÓN */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.nav-link {
+    padding: 10px 13px;
+
+    color: #624b59;
+    text-decoration: none;
+
+    font-size: 0.87rem;
+    font-weight: 600;
+
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #8f2856;
+    background: #f8edf2;
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background: #48152f;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 24px;
+        gap: 15px;
+    }
+
+    .main-nav {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        padding: 16px;
+    }
+
+    .main-nav {
+        width: 100%;
+        gap: 4px;
+    }
+
+    .nav-link {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+}
