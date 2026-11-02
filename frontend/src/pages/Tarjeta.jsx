@@ -168,9 +168,9 @@ function Tarjetas() {
                                             </td>
 
                                             <td>
-                                                {habilitado === true
+                                                {habilitado === 1
                                                     ? "Habilitado"
-                                                    : habilitado === false
+                                                    : habilitado === 2
                                                         ? "No habilitado"
                                                         : "—"}
                                             </td>
